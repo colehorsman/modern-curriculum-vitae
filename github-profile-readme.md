@@ -1,48 +1,52 @@
-<h1 align="center">
-  <img src="https://img.shields.io/badge/DevGraph-00D26A?style=for-the-badge&logo=github&logoColor=white" alt="DevGraph" />
-</h1>
+<div align="center">
 
-<p align="center">
-  <a href="https://modern-curriculum-vitae.vercel.app"><img src="https://img.shields.io/badge/🏠_Home-58A6FF?style=for-the-badge&labelColor=1a1a2e" /></a>
-  <a href="https://github.com/colehorsman?tab=followers"><img src="https://img.shields.io/badge/🔗_Network-58A6FF?style=for-the-badge&labelColor=1a1a2e" /></a>
-  <a href="https://github.com/users/colehorsman/projects/1"><img src="https://img.shields.io/badge/💼_Opportunities-F78166?style=for-the-badge&labelColor=1a1a2e" /></a>
-  <a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/💬_Messages-00D26A?style=for-the-badge&labelColor=1a1a2e" /></a>
+<!-- DEVGRAPH HEADER -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D26A,100:58A6FF&height=200&section=header&text=DevGraph&fontSize=80&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=GitHub%20as%20LinkedIn%20for%20Practitioners&descAlignY=55&descSize=20" width="100%"/>
+
+<!-- NAV BAR -->
+<p>
+  <a href="https://modern-curriculum-vitae.vercel.app"><img src="https://img.shields.io/badge/🏠_Home-58A6FF?style=for-the-badge" /></a>&nbsp;
+  <a href="https://github.com/colehorsman?tab=followers"><img src="https://img.shields.io/badge/🔗_Network-58A6FF?style=for-the-badge" /></a>&nbsp;
+  <a href="https://github.com/users/colehorsman/projects/1"><img src="https://img.shields.io/badge/💼_Opportunities-F78166?style=for-the-badge" /></a>&nbsp;
+  <a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/💬_Messages-00D26A?style=for-the-badge" /></a>
 </p>
 
----
+</div>
 
-<h2 align="center">Cole Horsman</h2>
-<h4 align="center">@colehorsman</h4>
+<!-- PROFILE CARD -->
+<table align="center">
+<tr>
+<td align="center" width="200">
+<br/>
+<img src="https://github.com/colehorsman.png" width="120" style="border-radius: 50%;" />
+<br/><br/>
+</td>
+<td width="500">
 
+## **Cole Horsman** &nbsp; <sub>@colehorsman</sub>
+
+<a href="https://linkedin.com/in/colep"><img src="https://img.shields.io/badge/+_Connect-00D26A?style=for-the-badge" /></a>&nbsp;
+<a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/Message-30363d?style=for-the-badge" /></a>
+
+<br/>
+
+<img src="https://img.shields.io/badge/AUTO--GENERATED-58A6FF?style=flat-square" /> <sub>from your GitHub activity</sub>
+
+**Field CTO** building **cloud security automation** • Active in <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white" /> • **143 contributions** this year
+
+</td>
+<td align="right" width="200">
+<sub><i>Banner generated from<br/>contribution patterns</i></sub>
+</td>
+</tr>
+</table>
+
+<!-- TABS -->
 <p align="center">
-  <a href="https://linkedin.com/in/colep"><img src="https://img.shields.io/badge/+_Connect-00D26A?style=for-the-badge&logoColor=white" /></a>
-  &nbsp;
-  <a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/Message-30363d?style=for-the-badge&logoColor=white" /></a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AUTO--GENERATED-58A6FF?style=flat-square" />
-  <i>from your GitHub activity</i>
-</p>
-
-<h3 align="center">
-  <b>Field CTO</b> building <b>cloud security automation</b> • Active in 
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white" />
-  • <b>143 contributions</b> this year
-</h3>
-
----
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Profile-58A6FF?style=flat-square" />
-  &nbsp;&nbsp;
-  <img src="https://img.shields.io/badge/Activity-30363d?style=flat-square" />
-  &nbsp;&nbsp;
-  <img src="https://img.shields.io/badge/Network-30363d?style=flat-square" />
-  &nbsp;&nbsp;
-  <img src="https://img.shields.io/badge/Endorsements-30363d?style=flat-square" />
+  <img src="https://img.shields.io/badge/Profile-58A6FF?style=for-the-badge" />&nbsp;
+  <img src="https://img.shields.io/badge/Activity-30363d?style=for-the-badge" />&nbsp;
+  <img src="https://img.shields.io/badge/Network-30363d?style=for-the-badge" />&nbsp;
+  <img src="https://img.shields.io/badge/Endorsements-30363d?style=for-the-badge" />
 </p>
 
 ---
