@@ -14,6 +14,11 @@
 ╚══════════════════════════════════════════════════════════════════╝
 ```
 
+<p align="center">
+  <a href="https://modern-curriculum-vitae.vercel.app"><img src="https://img.shields.io/badge/🚀_INTERACTIVE_PORTFOLIO-FFE500?style=for-the-badge&logoColor=000000" alt="Portfolio" /></a>
+  <a href="https://github.com/users/colehorsman/projects/1"><img src="https://img.shields.io/badge/📋_PROJECT_BOARD-000000?style=for-the-badge&logoColor=FFE500" alt="Projects" /></a>
+</p>
+
 ## `> whoami`
 
 ```javascript
@@ -101,6 +106,37 @@ const cole = {
 ```
 
 **Built with:** Kiro, Claude Code, MCP, Terraform
+
+---
+
+## `> git log --proof-of-work`
+
+<table>
+<tr>
+<td width="50%">
+
+### 🔒 Security & Cloud
+[![security-agent](https://img.shields.io/badge/security--agent-AI_AWS_Remediation-000000?style=flat-square&logo=amazonaws&logoColor=FFE500)](https://github.com/colehorsman/security-agent)
+[![aws-reinforce-dashboard](https://img.shields.io/badge/reinforce--dashboard-163_Talks_Summarized-000000?style=flat-square&logo=amazonaws&logoColor=FFE500)](https://github.com/colehorsman/aws-reinforce-dashboard)
+[![zombie_game](https://img.shields.io/badge/zombie__game-re:Invent_Demo-000000?style=flat-square&logo=python&logoColor=FFE500)](https://github.com/colehorsman/zombie_game)
+[![vibecheck](https://img.shields.io/badge/vibecheck-Secure_Vibe_Coding-000000?style=flat-square&logo=shield&logoColor=FFE500)](https://github.com/colehorsman/vibecheck)
+
+</td>
+<td width="50%">
+
+### 🛠️ Tools & Platforms
+[![modern-curriculum-vitae](https://img.shields.io/badge/modern--cv-Career_Showcase-000000?style=flat-square&logo=typescript&logoColor=FFE500)](https://github.com/colehorsman/modern-curriculum-vitae)
+[![flywheel](https://img.shields.io/badge/flywheel-Automation-000000?style=flat-square&logo=python&logoColor=FFE500)](https://github.com/colehorsman/flywheel)
+[![reinforce-analytics](https://img.shields.io/badge/reinforce--analytics-Data_Pipeline-000000?style=flat-square&logo=python&logoColor=FFE500)](https://github.com/colehorsman/reinforce-analytics)
+[![security_chatbot](https://img.shields.io/badge/security__chatbot-AI_Assistant-000000?style=flat-square&logo=openai&logoColor=FFE500)](https://github.com/colehorsman/security_chatbot)
+
+</td>
+</tr>
+</table>
+
+<p align="center">
+  <i>💡 Private work showcased via <a href="https://github.com/colehorsman/modern-curriculum-vitae/blob/main/vibe-code-projects.md">project abstracts</a> — open-sourcing ideas without leaking proprietary details</i>
+</p>
 
 ---
 
@@ -241,6 +277,18 @@ Vibe Code  ████████████████████ ∞
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=FFE500)](https://linkedin.com/in/colep)
 [![Email](https://img.shields.io/badge/-Email-000000?style=for-the-badge&logo=gmail&logoColor=FFE500)](mailto:colehorsman@gmail.com)
 [![Sonrai](https://img.shields.io/badge/-Sonrai_Security-000000?style=for-the-badge&logo=shield&logoColor=FFE500)](https://sonraisecurity.com)
+
+---
+
+## `> git stats --activity`
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=colehorsman&show_icons=true&theme=dark&bg_color=000000&title_color=FFE500&text_color=FFFFFF&icon_color=FFE500&border_color=FFE500&hide_border=false" alt="GitHub Stats" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=colehorsman&theme=dark&background=000000&ring=FFE500&fire=FFE500&currStreakLabel=FFE500&border=FFE500" alt="GitHub Streak" />
+</p>
 
 ---
 
