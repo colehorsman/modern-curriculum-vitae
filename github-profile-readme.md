@@ -1,270 +1,155 @@
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║   ██████╗ ██████╗ ██╗     ███████╗                              ║
-║  ██╔════╝██╔═══██╗██║     ██╔════╝                              ║
-║  ██║     ██║   ██║██║     █████╗                                ║
-║  ██║     ██║   ██║██║     ██╔══╝                                ║
-║  ╚██████╗╚██████╔╝███████╗███████╗                              ║
-║   ╚═════╝ ╚═════╝ ╚══════╝╚══════╝                              ║
-║                                                                  ║
-║   HORSMAN                                                        ║
-║   Part Cloud Engineer. Part Security. Part Tinkerer.             ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-```
+# Cole Horsman
 
 <p align="center">
-  <a href="https://modern-curriculum-vitae.vercel.app"><img src="https://img.shields.io/badge/🚀_INTERACTIVE_PORTFOLIO-FFE500?style=for-the-badge&logoColor=000000" alt="Portfolio" /></a>
-  <a href="https://github.com/users/colehorsman/projects/1"><img src="https://img.shields.io/badge/📋_PROJECT_BOARD-000000?style=for-the-badge&logoColor=FFE500" alt="Projects" /></a>
+  <a href="https://modern-curriculum-vitae.vercel.app"><img src="https://img.shields.io/badge/🏠_Home-1a1a2e?style=flat-square" /></a>
+  <a href="https://github.com/colehorsman?tab=followers"><img src="https://img.shields.io/badge/👥_Network-1a1a2e?style=flat-square" /></a>
+  <a href="https://github.com/users/colehorsman/projects/1"><img src="https://img.shields.io/badge/💼_Opportunities-1a1a2e?style=flat-square" /></a>
+  <a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/💬_Messages-1a1a2e?style=flat-square" /></a>
 </p>
 
-## `> whoami`
-
-```javascript
-const cole = {
-  role: "Field CTO",
-  company: "Sonrai Security",
-  identity: ["Cloud Engineer", "Security Leader", "Tinkerer"],
-  focus: ["Cloud Identity Security", "CIEM", "AI Security", "Vibe Coding"],
-  community: {
-    ciso: "ISSA Des Moines",
-    founder: "VibeDSM",
-    council: "AI Security Council (Founding Member)"
-  },
-  location: "Des Moines, IA",
-  motto: "Build it. Secure it. Tinker with it."
-};
-```
-
 ---
-
-## `> cat experience.txt`
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  🛡️  FIELD CTO                                              │
-│      Sonrai Security                          [CURRENT]     │
-│      Cloud Identity Security Platform                       │
-│      → Technical strategy & customer engagement             │
-│      → CIEM implementation at enterprise scale              │
-├─────────────────────────────────────────────────────────────┤
-│  🏛️  AVP, CLOUD SECURITY                                    │
-│      KKR                                      [2025]        │
-│      → 2,000+ identities with unused permissions            │
-│      → Cloud Permissions Firewall implementation            │
-├─────────────────────────────────────────────────────────────┤
-│  💼  AVP, CLOUD SECURITY / SECURITY OPERATIONS              │
-│      Global Atlantic Financial Group          [5+ YEARS]    │
-│      → 6 months → 6 days IAM resolution time                │
-│      → Prisma Cloud shift-left integration                  │
-│      → Featured: Palo Alto & Sonrai case studies            │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## `> ls projects/ -la`
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  📁 VIBE CODE PROJECTS                                                      │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  fintracker/              AI-Powered Financial Command Center               │
-│                           → React + TypeScript + Supabase + OpenAI + MCP    │
-│                           → Downloads transactions, AI categorization       │
-│                           → Replaces TurboTax, RocketMoney, spreadsheets    │
-│                                                                             │
-│  zombie-blaster/          Gamified Cloud Security Training                  │
-│                           → Python + Pygame + Sonrai API                    │
-│                           → Demoed at AWS re:Invent (Jeff Barr stopped by!) │
-│                           → Zap zombies = quarantine real IAM identities    │
-│                                                                             │
-│  feastiq/                 AI-Native Smart Nutrition                         │
-│                           → React Native + AWS Bedrock + Terraform          │
-│                           → Finally answers "what's for dinner?"            │
-│                           → Advanced RAG, Nova Canvas AI food photography   │
-│                                                                             │
-│  security-agent/          AI-Powered AWS Remediation                        │
-│                           → Python + Strands Agent + Terraform              │
-│                           → Auto-fixes AWS misconfigurations                │
-│                           → OWASP Top 10 + MITRE ATT&CK mapping             │
-│                           → github.com/colehorsman/security-agent           │
-│                                                                             │
-│  reinforce-dashboard/     AI Conference Summarizer                          │
-│                           → PostgreSQL + AI/ML                              │
-│                           → 163 AWS re:Inforce talks summarized             │
-│                           → github.com/colehorsman/aws-reinforce-dashboard  │
-│                                                                             │
-│  atlas/                   Autonomous Sales Intelligence                     │
-│                           → TypeScript + React + Supabase + MCP             │
-│                           → LinkedIn viz, Salesforce sync, MEDDIC scoring   │
-│                           → AI agents for meeting prep + deal risk alerts   │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
-**Built with:** Kiro, Claude Code, MCP, Terraform
-
----
-
-## `> git log --proof-of-work`
 
 <table>
 <tr>
-<td width="50%">
+<td width="70%">
 
-### 🔒 Security & Cloud
-[![security-agent](https://img.shields.io/badge/security--agent-AI_AWS_Remediation-000000?style=flat-square&logo=amazonaws&logoColor=FFE500)](https://github.com/colehorsman/security-agent)
-[![aws-reinforce-dashboard](https://img.shields.io/badge/reinforce--dashboard-163_Talks_Summarized-000000?style=flat-square&logo=amazonaws&logoColor=FFE500)](https://github.com/colehorsman/aws-reinforce-dashboard)
-[![zombie_game](https://img.shields.io/badge/zombie__game-re:Invent_Demo-000000?style=flat-square&logo=python&logoColor=FFE500)](https://github.com/colehorsman/zombie_game)
-[![vibecheck](https://img.shields.io/badge/vibecheck-Secure_Vibe_Coding-000000?style=flat-square&logo=shield&logoColor=FFE500)](https://github.com/colehorsman/vibecheck)
+### `AUTO-GENERATED` from GitHub activity
+
+**Field CTO** building **cloud security automation** • Active in **TypeScript**, **Python**, **Terraform** • **143 contributions** this year
+
+<p>
+  <a href="https://linkedin.com/in/colep"><img src="https://img.shields.io/badge/+_Connect-00D26A?style=for-the-badge" /></a>
+  <a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/Message-2a2a3e?style=for-the-badge" /></a>
+</p>
 
 </td>
-<td width="50%">
-
-### 🛠️ Tools & Platforms
-[![modern-curriculum-vitae](https://img.shields.io/badge/modern--cv-Career_Showcase-000000?style=flat-square&logo=typescript&logoColor=FFE500)](https://github.com/colehorsman/modern-curriculum-vitae)
-[![flywheel](https://img.shields.io/badge/flywheel-Automation-000000?style=flat-square&logo=python&logoColor=FFE500)](https://github.com/colehorsman/flywheel)
-[![reinforce-analytics](https://img.shields.io/badge/reinforce--analytics-Data_Pipeline-000000?style=flat-square&logo=python&logoColor=FFE500)](https://github.com/colehorsman/reinforce-analytics)
-[![security_chatbot](https://img.shields.io/badge/security__chatbot-AI_Assistant-000000?style=flat-square&logo=openai&logoColor=FFE500)](https://github.com/colehorsman/security_chatbot)
-
+<td width="30%" align="right">
+<i>Banner generated from contribution patterns</i>
 </td>
 </tr>
 </table>
 
-<p align="center">
-  <i>💡 Private work showcased via <a href="https://github.com/colehorsman/modern-curriculum-vitae/blob/main/vibe-code-projects.md">project abstracts</a> — open-sourcing ideas without leaking proprietary details</i>
-</p>
-
 ---
-
-## `> cat $0-vibe-stack.md`
-
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│  💸 THE $0 VIBE CODING STACK                                                │
-│                                                                             │
-│  After months of $200-300/mo bills on Bolt, Replit, Lovable...              │
-│  I optimized everything to be FREE (or near-free) for internal tools.       │
-│                                                                             │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  🖥️  IDE                                                                    │
-│      Google AntiGravity                                    [100% FREE]      │
-│      → Agent-first IDE with Gemini 3 Pro                                    │
-│      → Generous rate limits, refreshes every 5 hours                        │
-│      → Higher access with student ID                                        │
-│                                                                             │
-│  📚  AI DOCUMENTATION                                                       │
-│      SuperDocs                                             [100% FREE]      │
-│      → Open source (AGPL licensed)                                          │
-│      → MCP generator + AI actions                                           │
-│                                                                             │
-│  🗄️  DATABASE                                                               │
-│      Supabase                                              [FREE TIER]      │
-│      → 500 MB Postgres, 1 GB storage, 5 GB bandwidth                        │
-│      → 50K MAUs, realtime, auth included                                    │
-│                                                                             │
-│  🔐  AUTHENTICATION                                                         │
-│      Stack Auth                                            [FREE <10K]      │
-│      → Open source Auth0/Clerk alternative (YC S24)                         │
-│      → MIT/AGPL licensed, self-hostable                                     │
-│                                                                             │
-│  🤖  LLM / AI MODELS                                                        │
-│      OpenRouter                                            [FREE TIER]      │
-│      → 25+ free models (Llama 3, Mistral 7B, etc.)                          │
-│      → One API for any model                                                │
-│      Gemini via AI Studio                                  [FREE TIER]      │
-│      → Testing & prototyping                                                │
-│      Unsloth AI                                            [100% FREE]      │
-│      → Fine-tune LLMs 2x faster, 70% less VRAM                              │
-│      → Runs on free Google Colab T4 GPU                                     │
-│                                                                             │
-│  📦  VERSION CONTROL                                                        │
-│      GitHub / GitLab                                       [100% FREE]      │
-│      → Unlimited public/private repos                                       │
-│                                                                             │
-│  🚀  DEPLOYMENT                                                             │
-│      Vercel                                                [FREE TIER]      │
-│      → Hobby plan: unlimited projects, 100 GB transfer                      │
-│      → Auto HTTPS, preview deployments, CI/CD                               │
-│                                                                             │
-│  📊  ANALYTICS (use all 3!)                                                 │
-│      PostHog                                               [FREE TIER]      │
-│      → 1M events/mo, session recording, feature flags                       │
-│      Microsoft Clarity                                     [100% FREE]      │
-│      → Heatmaps, session recordings, unlimited traffic                      │
-│      Google Analytics                                      [100% FREE]      │
-│      → Traffic, conversions, audience insights                              │
-│                                                                             │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  💡 PRO TIP: This stack is enough to build & ship consumer products.        │
-│     Only upgrade when you actually need to scale.                           │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## `> ls talks/ --conferences`
-
-| Talk | Venue | Link |
-|------|-------|------|
-| **Cloud Security & Identity** | AWS re:Invent | — |
-| **Security Best Practices** | AWS re:Inforce | — |
-| **Prisma Cloud Journey** | Palo Alto Ignite '22 | [Info →](https://www.paloaltonetworks.com/blog/en/prisma-cloud/ignite22-conference-sessions/) |
-| **Shift Left is a Dead End** | Sonrai ACCESS '24 | [Watch →](https://sonraisecurity.com/events-webinars/shift-left-is-a-dead-end-for-cloud-identity-security/) |
-| **Least Privilege with SCPs** | Sonrai ACCESS '24 | [Watch →](https://sonraisecurity.com/access-2024/from-manual-to-automated-implementing-least-privilege-in-aws-with-scps/) |
-| **AI-Ready Security Architectures** | ISSA Des Moines | [Info →](https://desmoines.issa.org/events/4th-quarter-issa-des-moines-meeting/) |
-| **Vibe Coding** | Chainguard (w/ Dan Lorenc) | [Watch →](https://www.youtube.com/watch?v=CleYfvBM8mk) |
-
----
-
-## `> cat community.txt`
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│  🎖️  CISO (VOLUNTEER)                                       │
-│      ISSA Des Moines Chapter                                │
-├─────────────────────────────────────────────────────────────┤
-│  🚀  FOUNDER                                                │
-│      VibeDSM — Des Moines Vibe Coding Collaboration         │
-├─────────────────────────────────────────────────────────────┤
-│  🤖  FOUNDING MEMBER                                        │
-│      AI Security Council                                    │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## `> tech --expertise`
 
 <table>
 <tr>
-<td width="50%">
+<td width="65%" valign="top">
 
-### ☁️ Cloud & Security
-```
-AWS        ████████████████████ 100%
-CIEM       ████████████████████ 100%
-IAM        ████████████████████ 100%
-Zero Trust ████████████████████ 100%
-```
+## ⚡ Proof of Work
+<sup>Replaces "Experience"</sup>
+
+---
+
+### [security-agent](https://github.com/colehorsman/security-agent) `MAINTAINER`
+AI-Powered AWS Remediation using Strands Agent + Terraform. Auto-fixes misconfigurations with OWASP Top 10 mapping.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+⭐ Stars | 🍴 Forks | Last commit: recent
+
+---
+
+### [aws-reinforce-dashboard](https://github.com/colehorsman/aws-reinforce-dashboard) `CREATOR`
+163 AWS re:Inforce conference talks summarized with AI. Searchable database with key takeaways.
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
+⭐ Stars | 🍴 Forks | Last commit: Jun 2025
+
+---
+
+### [zombie_game](https://github.com/colehorsman/zombie_game) `CREATOR`
+Gamified cloud security training demoed at AWS re:Invent. Jeff Barr stopped by! Zap zombies = quarantine real IAM identities.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+⭐ 1 | 🍴 Forks | MIT License
+
+---
+
+### [modern-curriculum-vitae](https://github.com/colehorsman/modern-curriculum-vitae) `CREATOR`
+TypeScript platform generating career showcases from resumes, GitHub data, and job postings. Powers this profile.
+
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
+⭐ Stars | 🍴 Forks | Active development
+
+---
+
+### [vibecheck](https://github.com/colehorsman/vibecheck) `CREATOR`
+Sip. Secure. Ship. — Build secure projects with AI in one hour.
+
+![MIT](https://img.shields.io/badge/MIT-green?style=flat-square)
+⭐ Stars | 🍴 Forks | MIT License
+
+---
+
+<details>
+<summary>📁 <b>Private Work Abstracts</b> — open-sourcing ideas without leaking proprietary details</summary>
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| **FinTracker** | AI-Powered Financial Command Center | React, TypeScript, Supabase, OpenAI |
+| **FeastIQ** | AI-Native Smart Nutrition | React Native, AWS Bedrock, Terraform |
+| **ATLAS** | Autonomous Sales Intelligence | TypeScript, React, Supabase, MCP |
+| **KKR Cloud Security** | 2,000+ identities with unused permissions remediated | Sonrai, AWS |
+| **Global Atlantic** | 6 months → 6 days IAM resolution time | Prisma Cloud, AWS |
+
+[View full abstracts →](https://github.com/colehorsman/modern-curriculum-vitae/blob/main/vibe-code-projects.md)
+
+</details>
 
 </td>
-<td width="50%">
+<td width="35%" valign="top">
 
-### 🛠️ Tools & Tinkering
+## ✅ Verified Skills
+<sup>(from code)</sup>
+
+---
+
+**Terraform** `234 commits`
 ```
-Kiro       ████████████████████ 100%
-Claude Code████████████████████ 100%
-MCP        ████████████████████ 100%
-Terraform  ████████████████████ 100%
-Vibe Code  ████████████████████ ∞
+████████████████░░░░
 ```
+
+**TypeScript** `456 commits`
+```
+████████████████████
+```
+
+**Python** `189 commits`
+```
+██████████████░░░░░░
+```
+
+**AWS** `312 commits`
+```
+██████████████████░░
+```
+
+**HCL** `145 commits`
+```
+████████████░░░░░░░░
+```
+
+---
+
+<sup><i>Skills verified by actual code analysis</i></sup>
+
+---
+
+## 🎤 Thought Leadership
+
+- [Vibe Coding w/ Dan Lorenc](https://www.youtube.com/watch?v=CleYfvBM8mk)
+- [Shift Left is a Dead End](https://sonraisecurity.com/events-webinars/shift-left-is-a-dead-end-for-cloud-identity-security/)
+- [Least Privilege with SCPs](https://sonraisecurity.com/access-2024/from-manual-to-automated-implementing-least-privilege-in-aws-with-scps/)
+- AWS re:Invent Speaker
+- AWS re:Inforce Speaker
+- Palo Alto Ignite '22
+
+---
+
+## 🏛️ Community
+
+- **CISO** @ ISSA Des Moines
+- **Founder** @ VibeDSM
+- **Founding Member** @ AI Security Council
 
 </td>
 </tr>
@@ -272,25 +157,29 @@ Vibe Code  ████████████████████ ∞
 
 ---
 
-## `> connect --social`
-
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=FFE500)](https://linkedin.com/in/colep)
-[![Email](https://img.shields.io/badge/-Email-000000?style=for-the-badge&logo=gmail&logoColor=FFE500)](mailto:colehorsman@gmail.com)
-[![Sonrai](https://img.shields.io/badge/-Sonrai_Security-000000?style=for-the-badge&logo=shield&logoColor=FFE500)](https://sonraisecurity.com)
-
----
-
-## `> git stats --activity`
+## 📊 Activity Feed
+<sup>Auto-generated from commits, PRs, releases</sup>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=colehorsman&show_icons=true&theme=dark&bg_color=000000&title_color=FFE500&text_color=FFFFFF&icon_color=FFE500&border_color=FFE500&hide_border=false" alt="GitHub Stats" />
+  <img src="https://github-readme-stats.vercel.app/api?username=colehorsman&show_icons=true&theme=dark&bg_color=0d1117&title_color=00D26A&text_color=c9d1d9&icon_color=00D26A&border_color=30363d&hide_border=false&count_private=true" alt="GitHub Stats" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=colehorsman&theme=dark&background=000000&ring=FFE500&fire=FFE500&currStreakLabel=FFE500&border=FFE500" alt="GitHub Streak" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=colehorsman&theme=dark&background=0d1117&ring=00D26A&fire=00D26A&currStreakLabel=00D26A&border=30363d" alt="GitHub Streak" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=colehorsman&layout=compact&theme=dark&bg_color=0d1117&title_color=00D26A&text_color=c9d1d9&border_color=30363d&hide_border=false" alt="Top Languages" />
 </p>
 
 ---
+
+<p align="center">
+  <a href="https://linkedin.com/in/colep"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="mailto:colehorsman@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  <a href="https://sonraisecurity.com"><img src="https://img.shields.io/badge/-Sonrai_Security-00D26A?style=for-the-badge&logo=shield&logoColor=white" /></a>
+  <a href="https://modern-curriculum-vitae.vercel.app"><img src="https://img.shields.io/badge/-Portfolio-FFE500?style=for-the-badge&logo=vercel&logoColor=black" /></a>
+</p>
 
 <p align="center">
   <code>// Build it. Secure it. Tinker with it.</code>
