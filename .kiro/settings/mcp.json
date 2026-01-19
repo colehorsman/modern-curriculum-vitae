@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "chrome-tools": {
+      "command": "npx",
+      "args": [
+        "@nicholmikey/chrome-tools"
+      ],
+      "env": {
+        "CHROME_DEBUG_URL": "http://localhost:9222",
+        "CHROME_CONNECTION_TYPE": "direct"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "list_tabs",
+        "capture_screenshot",
+        "load_url",
+        "query_dom_elements",
+        "click_element",
+        "execute_script"
+      ]
+    }
+  }
+}
