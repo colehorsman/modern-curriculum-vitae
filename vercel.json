@@ -1,6 +1,8 @@
 {
-  "buildCommand": null,
+  "buildCommand": "",
+  "installCommand": "",
   "outputDirectory": "public",
+  "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
