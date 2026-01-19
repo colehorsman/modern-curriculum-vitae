@@ -236,7 +236,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=colehorsman&theme=github-dark-blue&background=0d1117&ring=00D26A&fire=F78166&currStreakLabel=58A6FF&border=30363d" alt="GitHub Streak" />
+  <img src="https://streak-stats.demolab.com/?user=colehorsman&theme=github-dark-blue&background=0d1117&ring=00D26A&fire=F78166&currStreakLabel=58A6FF&border=30363d" alt="GitHub Streak" />
 </p>
 
 <p align="center">
