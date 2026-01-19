@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cole Horsman | Part Cloud Engineer. Part Security. Part Tinkerer.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000; --white: #FFFFFF; --yellow: #FFE500; --blue: #0066FF;
+      --pink: #FF6B9D; --green: #00FF88; --orange: #FF6B35; --purple: #9B5DE5; --red: #FF3333;
+      --border-width: 3px; --shadow-offset: 6px;
+      --font-main: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-main); background: var(--white); color: var(--black); line-height: 1.5; }
+    body.nerd-mode { font-family: var(--font-mono); background: #0a0a0a; color: #00FF00; }
+    
+    /* Mode Toggle */
+    .mode-toggle { position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--black); border: 2px solid var(--yellow); font-family: var(--font-mono); font-size: 0.875rem; color: var(--yellow); cursor: pointer; }
+    .mode-toggle:hover { background: var(--yellow); color: var(--black); }
+    body.nerd-mode .mode-toggle { background: #0a0a0a; border-color: #00FF00; color: #00FF00; }
+    body.nerd-mode .mode-toggle:hover { background: #00FF00; color: #0a0a0a; }
+    .toggle-switch { width: 40px; height: 20px; background: #333; border-radius: 10px; position: relative; transition: background 0.3s; }
+    .toggle-switch::after { content: ''; position: absolute; width: 16px; height: 16px; background: var(--yellow); border-radius: 50%; top: 2px; left: 2px; transition: transform 0.3s; }
+    body.nerd-mode .toggle-switch { background: #003300; }
+    body.nerd-mode .toggle-switch::after { transform: translateX(20px); background: #00FF00; }
+
+    /* Normal Mode Styles */
+    .card { background: var(--white); border: var(--border-width) solid var(--black); box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black); transition: transform 0.1s, box-shadow 0.1s; }
+    .card:hover { transform: translate(-2px, -2px); box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0 var(--black); }
+    .badge { display: inline-block; padding: 4px 12px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border: 2px solid var(--black); background: var(--yellow); }
+    .badge.blue { background: var(--blue); color: var(--white); } .badge.pink { background: var(--pink); }
+    .badge.green { background: var(--green); } .badge.orange { background: var(--orange); }
+    .badge.purple { background: var(--purple); color: var(--white); } .badge.red { background: var(--red); color: var(--white); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-family: var(--font-main); font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--black); background: var(--yellow); border: var(--border-width) solid var(--black); box-shadow: 4px 4px 0 var(--black); cursor: pointer; transition: all 0.1s; }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--black); }
+    .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--black); }
+    .btn.outline { background: var(--white); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 24px 0; border-bottom: var(--border-width) solid var(--black); }
+    header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--black); }
+    nav { display: flex; gap: 32px; } nav a { font-weight: 500; text-decoration: none; color: var(--black); position: relative; }
+    nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 3px; background: var(--yellow); transition: width 0.2s; }
+    nav a:hover::after { width: 100%; }
+    .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
+    .section-title::before { content: ''; width: 40px; height: 8px; background: var(--yellow); }
+
+    /* Nerd Mode Overrides */
+    body.nerd-mode .card { background: #0a0a0a; border: 1px solid #00FF00; box-shadow: none; }
+    body.nerd-mode .card:hover { transform: none; box-shadow: 0 0 10px rgba(0,255,0,0.3); }
+    body.nerd-mode .badge { background: transparent; border: 1px solid #00FF00; color: #00FF00; }
+    body.nerd-mode .badge.blue, body.nerd-mode .badge.pink, body.nerd-mode .badge.green, 
+    body.nerd-mode .badge.orange, body.nerd-mode .badge.purple, body.nerd-mode .badge.red { background: transparent; color: #00FF00; border-color: #00FF00; }
+    body.nerd-mode .btn { font-family: var(--font-mono); background: transparent; border: 1px solid #00FF00; color: #00FF00; box-shadow: none; }
+    body.nerd-mode .btn:hover { background: #00FF00; color: #0a0a0a; transform: none; box-shadow: 0 0 10px rgba(0,255,0,0.5); }
+    body.nerd-mode .btn.outline { background: transparent; }
+    body.nerd-mode header { border-color: #00FF00; background: #0a0a0a; }
+    body.nerd-mode .logo { color: #00FF00; }
+    body.nerd-mode nav a { color: #00FF00; }
+    body.nerd-mode nav a::after { background: #00FF00; }
+    body.nerd-mode .section-title { color: #00FF00; }
+    body.nerd-mode .section-title::before { background: #00FF00; }
+
+    /* Terminal Window Wrapper for Nerd Mode */
+    body.nerd-mode .terminal-wrapper { display: block !important; }
+    .terminal-wrapper { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #0a0a0a; overflow: hidden; padding: 60px 20px 20px 20px; z-index: 100; box-sizing: border-box; }
+    .terminal-window { max-width: 1000px; margin: 0 auto; height: 100%; display: flex; flex-direction: column; }
+    .terminal-header { background: #1a1a1a; border: 1px solid #00FF00; padding: 8px 16px; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .terminal-dots { display: flex; gap: 6px; }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-dot.red { background: #FF5F56; }
+    .terminal-dot.yellow { background: #FFBD2E; }
+    .terminal-dot.green { background: #27CA40; }
+    .terminal-title { flex: 1; text-align: center; color: #888; font-size: 0.875rem; }
+    
+    /* Terminal Tabs */
+    .terminal-tabs { display: flex; background: #1a1a1a; border: 1px solid #00FF00; border-top: none; flex-shrink: 0; overflow-x: auto; }
+    .terminal-tab { padding: 10px 20px; color: #666; cursor: pointer; border-right: 1px solid #333; font-size: 0.875rem; white-space: nowrap; transition: all 0.2s; }
+    .terminal-tab:hover { color: #00FF00; background: #0f0f0f; }
+    .terminal-tab.active { color: #00FF00; background: #0a0a0a; border-bottom: 2px solid #00FF00; }
+    .terminal-tab::before { content: '📁 '; }
+    .terminal-tab[data-tab="about"]::before { content: '👤 '; }
+    .terminal-tab[data-tab="experience"]::before { content: '💼 '; }
+    .terminal-tab[data-tab="talks"]::before { content: '🎤 '; }
+    .terminal-tab[data-tab="community"]::before { content: '🤝 '; }
+    .terminal-tab[data-tab="skills"]::before { content: '⚡ '; }
+    .terminal-tab[data-tab="contact"]::before { content: '📧 '; }
+    
+    .terminal-body { background: #0a0a0a; border: 1px solid #00FF00; border-top: none; padding: 24px; flex: 1; overflow-y: auto; }
+    .terminal-pane { display: none; }
+    .terminal-pane.active { display: block; }
+    .terminal-prompt { color: #00FF00; }
+    .terminal-prompt::before { content: '$ '; color: #888; }
+    .terminal-output { margin: 16px 0 32px 0; white-space: pre-wrap; line-height: 1.6; }
+    .terminal-section { margin-bottom: 32px; }
+    .terminal-cmd { color: #00BFFF; }
+    .terminal-comment { color: #666; }
+    .terminal-string { color: #FFE500; }
+    .terminal-link { color: #00BFFF; text-decoration: underline; }
+    .terminal-link:hover { color: #00FF00; }
+    .ascii-box { border: 1px solid #00FF00; padding: 16px; margin: 16px 0; }
+    .blink { animation: blink 1s infinite; }
+    @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+    /* Hide normal content in nerd mode */
+    body.nerd-mode .normal-content { display: none !important; }
+    body:not(.nerd-mode) .terminal-wrapper { display: none !important; }
+    
+    /* Interactive Terminal Input */
+    .terminal-input-wrapper { display: flex; align-items: center; padding: 16px 0; border-top: 1px solid #333; margin-top: 16px; position: relative; }
+    .terminal-input-wrapper::before { content: '$ '; color: #888; margin-right: 8px; }
+    .terminal-input { flex: 1; background: transparent; border: none; color: #00FF00; font-family: var(--font-mono); font-size: 1rem; outline: none; caret-color: #00FF00; }
+    .terminal-input::placeholder { color: #444; }
+    
+    /* Command Autocomplete */
+    .command-autocomplete { position: absolute; bottom: 100%; left: 0; right: 0; background: #111; border: 1px solid #00FF00; border-bottom: none; max-height: 300px; overflow-y: auto; display: none; }
+    .command-autocomplete.visible { display: block; }
+    .autocomplete-item { padding: 10px 16px; cursor: pointer; display: flex; justify-content: space-between; border-bottom: 1px solid #222; }
+    .autocomplete-item:hover, .autocomplete-item.selected { background: #1a1a1a; }
+    .autocomplete-item .cmd { color: #00FF00; }
+    .autocomplete-item .desc { color: #666; font-size: 0.85rem; }
+    
+    /* Command Output Area */
+    .command-output { margin-top: 16px; padding: 16px; background: #111; border: 1px solid #333; border-radius: 4px; display: none; }
+    .command-output.visible { display: block; }
+    .command-output.success { border-color: #00FF00; }
+    .command-output.error { border-color: #FF3333; }
+    .command-output.fun { border-color: #FFE500; }
+    
+    /* Search Highlights */
+    .search-highlight { background: #FFE500; color: #000; padding: 0 2px; }
+    
+    /* Matrix Rain Effect */
+    .matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; opacity: 0; transition: opacity 0.3s; }
+    .matrix-canvas.active { opacity: 1; }
+    
+    /* Confetti */
+    .confetti { position: fixed; pointer-events: none; z-index: 9999; }
+    
+    /* Vim Trap */
+    .vim-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #000; z-index: 10000; display: none; flex-direction: column; font-family: var(--font-mono); color: #fff; padding: 20px; }
+    .vim-overlay.active { display: flex; }
+    .vim-content { flex: 1; white-space: pre; overflow: hidden; }
+    .vim-status { background: #444; padding: 4px 8px; }
+    .vim-command { background: #000; padding: 4px 8px; color: #fff; }
+  </style>
+</head>
+<body>
+  <!-- Mode Toggle Button -->
+  <button class="mode-toggle" onclick="toggleNerdMode()">
+    <span class="toggle-label">🤓 NERD MODE</span>
+    <div class="toggle-switch"></div>
+  </button>
+
+  <!-- TERMINAL/NERD MODE VIEW -->
+  <div class="terminal-wrapper">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+        </div>
+        <span class="terminal-title">cole@horsman:~</span>
+      </div>
+      <div class="terminal-tabs">
+        <div class="terminal-tab active" data-tab="about" onclick="switchTab('about')">about</div>
+        <div class="terminal-tab" data-tab="experience" onclick="switchTab('experience')">experience</div>
+        <div class="terminal-tab" data-tab="talks" onclick="switchTab('talks')">talks</div>
+        <div class="terminal-tab" data-tab="community" onclick="switchTab('community')">community</div>
+        <div class="terminal-tab" data-tab="skills" onclick="switchTab('skills')">skills</div>
+        <div class="terminal-tab" data-tab="contact" onclick="switchTab('contact')">contact</div>
+      </div>
+      <div class="terminal-body">
+        
+        <!-- ABOUT TAB -->
+        <div class="terminal-pane active" id="pane-about">
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat banner.txt</div>
+            <div class="terminal-output">
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║  ██████╗ ██████╗ ██╗     ███████╗                              ║
+║ ██╔════╝██╔═══██╗██║     ██╔════╝                              ║
+║ ██║     ██║   ██║██║     █████╗                                ║
+║ ██║     ██║   ██║██║     ██╔══╝                                ║
+║ ╚██████╗╚██████╔╝███████╗███████╗                              ║
+║  ╚═════╝ ╚═════╝ ╚══════╝╚══════╝                              ║
+║                                                                ║
+║  HORSMAN                                                       ║
+║  Part Cloud Engineer. Part Security. Part Tinkerer.            ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+            </div>
+          </div>
+
+          <div class="terminal-section">
+            <div class="terminal-prompt">whoami --verbose</div>
+            <div class="terminal-output">
+<span class="terminal-comment"># User Profile</span>
+{
+  <span class="terminal-string">"name"</span>: <span class="terminal-string">"Cole Horsman"</span>,
+  <span class="terminal-string">"role"</span>: <span class="terminal-string">"Field CTO"</span>,
+  <span class="terminal-string">"company"</span>: <span class="terminal-string">"Sonrai Security"</span>,
+  <span class="terminal-string">"identity"</span>: [<span class="terminal-string">"Cloud Engineer"</span>, <span class="terminal-string">"Security Leader"</span>, <span class="terminal-string">"Tinkerer"</span>],
+  <span class="terminal-string">"location"</span>: <span class="terminal-string">"Des Moines, IA"</span>,
+  <span class="terminal-string">"email"</span>: <span class="terminal-string">"colehorsman@gmail.com"</span>,
+  <span class="terminal-string">"motto"</span>: <span class="terminal-string">"Build it. Secure it. Tinker with it."</span>
+}
+            </div>
+          </div>
+
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat about.md</div>
+            <div class="terminal-output">
+Cloud security leader who can't stop building things. I specialize in 
+identity security, CIEM, and enterprise cloud architecture — helping 
+organizations achieve least privilege at scale.
+
+When I'm not securing clouds, I'm tinkering with AI, vibe coding, and 
+building community.
+
+<span class="terminal-comment"># Quick Stats</span>
+┌────────────────────┬────────────────────────────────┐
+│ Current Role       │ Field CTO @ Sonrai Security    │
+│ IAM Resolution     │ 6 months → 6 days              │
+│ Identities Managed │ 2,000+                         │
+│ AWS Conferences    │ 3 (re:Invent, re:Inforce, etc) │
+└────────────────────┴────────────────────────────────┘
+            </div>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE TAB -->
+        <div class="terminal-pane" id="pane-experience">
+          <div class="terminal-section">
+            <div class="terminal-prompt">ls -la experience/</div>
+            <div class="terminal-output">
+total 4
+drwxr-xr-x  4 cole  staff   128 Jan 15 2026 .
+drwxr-xr-x  8 cole  staff   256 Jan 15 2026 ..
+-rw-r--r--  1 cole  staff  1024 Jan 15 2026 sonrai-security.job      <span class="terminal-comment"># CURRENT</span>
+-rw-r--r--  1 cole  staff   896 Mar 01 2025 kkr.job
+-rw-r--r--  1 cole  staff  2048 Jan 01 2020 global-atlantic.job
+-rw-r--r--  1 cole  staff   512 Jan 01 2014 sogeti.job
+            </div>
+          </div>
+
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat experience/sonrai-security.job</div>
+            <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────┐
+│  🛡️  FIELD CTO                                    [CURRENT]     │
+│      Sonrai Security                                            │
+│      Cloud Identity Security Platform                           │
+├─────────────────────────────────────────────────────────────────┤
+│  → Leading technical strategy & customer engagement             │
+│  → Advising enterprise customers on CIEM implementation         │
+│  → Driving product direction based on market needs              │
+│  → Cloud Security Advocate at major conferences                 │
+└─────────────────────────────────────────────────────────────────┘
+            </div>
+          </div>
+
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat experience/kkr.job</div>
+            <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────┐
+│  🏛️  AVP, CLOUD SECURITY                                        │
+│      KKR                                     [Mar-Aug 2025]     │
+├─────────────────────────────────────────────────────────────────┤
+│  → Led cloud security for one of world's largest investment     │
+│    firms                                                        │
+│  → Managed IAM across 2,000+ identities with unused permissions │
+│  → Implemented Cloud Permissions Firewall for automated least   │
+│    privilege                                                    │
+└─────────────────────────────────────────────────────────────────┘
+            </div>
+          </div>
+
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat experience/global-atlantic.job</div>
+            <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────┐
+│  💼  AVP, CLOUD SECURITY / SECURITY OPERATIONS                  │
+│      Global Atlantic Financial Group              [5+ YEARS]    │
+├─────────────────────────────────────────────────────────────────┤
+│  → Reduced identity resolution: 6 months → 6 days               │
+│  → Implemented Prisma Cloud for shift-left security             │
+│  → Established cloud security governance frameworks             │
+│  → Featured in Palo Alto & Sonrai case studies                  │
+└─────────────────────────────────────────────────────────────────┘
+
+<span class="terminal-comment"># Case Studies</span>
+<a href="https://sonraisecurity.com/customer-success/global-atlantic/" class="terminal-link">→ sonraisecurity.com/customer-success/global-atlantic</a>
+<a href="https://www.paloaltonetworks.com/customers/global-atlantic-financial-group-shifts-left-by-integrating-security-into-the-development-process" class="terminal-link">→ paloaltonetworks.com/customers/global-atlantic...</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- TALKS TAB -->
+        <div class="terminal-pane" id="pane-talks">
+          <div class="terminal-section">
+            <div class="terminal-prompt">ls talks/ --conferences</div>
+            <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────┐
+│  🎤 CONFERENCE TALKS                                            │
+├─────────────────────────────────────────────────────────────────┤
+│  AWS re:Invent          Cloud Security & Identity               │
+│  AWS re:Inforce         Security Best Practices                 │
+│  Palo Alto Ignite '22   Prisma Cloud Journey                    │
+│  Sonrai ACCESS '24      Shift Left is a Dead End                │
+│  Sonrai ACCESS '24      Least Privilege with SCPs               │
+│  ISSA Des Moines        AI-Ready Security Architectures         │
+│  Chainguard             Vibe Coding (w/ Dan Lorenc)             │
+└─────────────────────────────────────────────────────────────────┘
+
+<span class="terminal-comment"># Watch Links</span>
+<a href="https://sonraisecurity.com/events-webinars/shift-left-is-a-dead-end-for-cloud-identity-security/" class="terminal-link">→ Shift Left is a Dead End</a>
+<a href="https://sonraisecurity.com/access-2024/from-manual-to-automated-implementing-least-privilege-in-aws-with-scps/" class="terminal-link">→ Least Privilege with SCPs</a>
+<a href="https://www.paloaltonetworks.com/blog/en/prisma-cloud/ignite22-conference-sessions/" class="terminal-link">→ Prisma Cloud Journey @ Ignite</a>
+<a href="https://www.youtube.com/watch?v=CleYfvBM8mk" class="terminal-link">→ Vibe Coding @ Chainguard</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMMUNITY TAB -->
+        <div class="terminal-pane" id="pane-community">
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat community.txt</div>
+            <div class="terminal-output">
+┌─────────────────────────────────────────────────────────────────┐
+│  🎖️  CISO (VOLUNTEER)                                           │
+│      ISSA Des Moines Chapter                                    │
+│      Security strategy & governance for local chapter           │
+├─────────────────────────────────────────────────────────────────┤
+│  🚀  FOUNDER                                                    │
+│      VibeDSM                                                    │
+│      Des Moines Area Vibe Coding Collaboration                  │
+├─────────────────────────────────────────────────────────────────┤
+│  🤖  FOUNDING MEMBER                                            │
+│      AI Security Council                                        │
+│      Shaping the future of AI security                          │
+└─────────────────────────────────────────────────────────────────┘
+            </div>
+          </div>
+          <div class="terminal-section">
+            <div class="terminal-prompt">ls projects/ -la</div>
+            <div class="terminal-output">
+<span class="terminal-comment"># Personal & Open Source Projects</span>
+
+drwxr-xr-x  <span class="terminal-string">fintracker/</span>                    <span class="terminal-comment"># AI-Powered Financial Command Center</span>
+            <span class="terminal-comment">→ React + TypeScript + Supabase + OpenAI + MCP</span>
+            <span class="terminal-comment">→ Downloads transactions, AI categorization, tax tracking</span>
+            <span class="terminal-comment">→ Daily automation, email summaries, built with Kiro</span>
+
+drwxr-xr-x  <span class="terminal-string">zombie-blaster/</span>                <span class="terminal-comment"># Gamified Cloud Security Training</span>
+            <span class="terminal-comment">→ Python + Pygame + GraphQL + Sonrai API</span>
+            <span class="terminal-comment">→ Zap zombies = quarantine real IAM identities</span>
+            <span class="terminal-comment">→ 610 tests, 60 FPS, built in 11 days with Kiro</span>
+
+drwxr-xr-x  <span class="terminal-string">feastiq/</span>                       <span class="terminal-comment"># AI-Native Smart Nutrition</span>
+            <span class="terminal-comment">→ React Native + AWS Bedrock + Terraform + FastAPI</span>
+            <span class="terminal-comment">→ Finally answers "what's for dinner?"</span>
+            <span class="terminal-comment">→ Advanced RAG, Nova Canvas AI food photography</span>
+
+drwxr-xr-x  <span class="terminal-string">security-agent/</span>                <span class="terminal-comment"># AI-Powered AWS Remediation</span>
+            <span class="terminal-comment">→ Python + Strands Agent + Terraform + Security Hub</span>
+            <span class="terminal-comment">→ Auto-fixes AWS misconfigurations autonomously</span>
+            <span class="terminal-comment">→ OWASP Top 10 + MITRE ATT&CK mapping</span>
+
+drwxr-xr-x  <span class="terminal-string">reinforce-dashboard/</span>           <span class="terminal-comment"># AI Conference Summarizer</span>
+            <span class="terminal-comment">→ PostgreSQL + AI/ML + AWS re:Inforce 2025</span>
+            <span class="terminal-comment">→ 163 talks, 40+ hours summarized</span>
+            <span class="terminal-comment">→ Searchable knowledge base by security domain</span>
+
+drwxr-xr-x  <span class="terminal-string">atlas/</span>                         <span class="terminal-comment"># Autonomous Sales Intelligence</span>
+            <span class="terminal-comment">→ TypeScript + React + Supabase + MCP</span>
+            <span class="terminal-comment">→ LinkedIn network viz, Salesforce sync, MEDDIC scoring</span>
+            <span class="terminal-comment">→ AI agents for meeting prep + deal risk alerts</span>
+
+<span class="terminal-comment"># Enterprise Projects (Abstracts)</span>
+
+drwxr-xr-x  cloud-permissions-firewall/    <span class="terminal-comment"># KKR - 2000+ identities</span>
+drwxr-xr-x  iam-resolution-acceleration/   <span class="terminal-comment"># Global Atlantic - 6mo→6d</span>
+drwxr-xr-x  shift-left-integration/        <span class="terminal-comment"># Prisma Cloud DevSecOps</span>
+drwxr-xr-x  vibedsm-platform/              <span class="terminal-comment"># Community - Vibe Coding</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS TAB -->
+        <div class="terminal-pane" id="pane-skills">
+          <div class="terminal-section">
+            <div class="terminal-prompt">neofetch --skills</div>
+            <div class="terminal-output">
+        ████████████████████
+       ██                  ██       <span class="terminal-string">cole@horsman</span>
+      ██   ██████████████   ██      ─────────────────────
+     ██   ██            ██   ██     <span class="terminal-comment">Cloud:</span> AWS, Azure, GCP, Multi-Cloud
+    ██   ██   ██████████ ██   ██    <span class="terminal-comment">Security:</span> CIEM, IAM, Zero Trust, SCPs
+   ██   ██   ██        ██ ██   ██   <span class="terminal-comment">Tools:</span> Sonrai, Prisma Cloud, Terraform
+  ██   ██   ██   ████   ██ ██   ██  <span class="terminal-comment">Tinkering:</span> AI/ML, Vibe Coding, Automation
+   ██   ██   ██        ██ ██   ██   
+    ██   ██   ██████████ ██   ██    ████████████████████ AWS 100%
+     ██   ██            ██   ██     ████████████████████ CIEM 100%
+      ██   ██████████████   ██      ████████████████████ IAM 100%
+       ██                  ██       ████████████████░░░░ AI/ML 80%
+        ████████████████████        ████████████████████ Vibe ∞
+
+<span class="terminal-comment"># Tools: Kiro, Claude Code, MCP, Terraform, Sonrai, Prisma Cloud</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT TAB -->
+        <div class="terminal-pane" id="pane-contact">
+          <div class="terminal-section">
+            <div class="terminal-prompt">cat contact.sh</div>
+            <div class="terminal-output">
+#!/bin/bash
+<span class="terminal-comment"># Connect with Cole Horsman</span>
+
+EMAIL="<a href="mailto:colehorsman@gmail.com" class="terminal-link">colehorsman@gmail.com</a>"
+LINKEDIN="<a href="https://linkedin.com/in/colep" class="terminal-link">linkedin.com/in/colep</a>"
+GITHUB="<a href="https://github.com/colehorsman" class="terminal-link">github.com/colehorsman</a>"
+COMPANY="<a href="https://sonraisecurity.com" class="terminal-link">sonraisecurity.com</a>"
+LOCATION="Des Moines, IA"
+
+echo "Let's build something — or secure it. Preferably both."
+            </div>
+          </div>
+        </div>
+
+        <!-- Command Output Area -->
+        <div class="command-output" id="commandOutput"></div>
+        
+        <!-- Interactive Input -->
+        <div class="terminal-input-wrapper">
+          <div class="command-autocomplete" id="autocomplete"></div>
+          <input type="text" class="terminal-input" id="terminalInput" placeholder="Type / for commands..." autocomplete="off" spellcheck="false">
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
+  <!-- Vim Trap Overlay -->
+  <div class="vim-overlay" id="vimOverlay">
+    <div class="vim-content" id="vimContent"></div>
+    <div class="vim-status">-- NORMAL --</div>
+    <div class="vim-command" id="vimCommand"></div>
+  </div>
+  
+  <!-- Matrix Canvas -->
+  <canvas class="matrix-canvas" id="matrixCanvas"></canvas>
+
+  <!-- NORMAL MODE VIEW -->
+  <div class="normal-content">
+  <header>
+    <div class="container">
+      <a href="#" class="logo">CH.</a>
+      <nav>
+        <a href="#about">About</a><a href="#experience">Experience</a><a href="#speaking">Speaking</a>
+        <a href="#projects">Projects</a><a href="#community">Community</a><a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn">Let's Connect</a>
+    </div>
+  </header>
+
+  <style>
+    .hero { padding: 80px 0; background: var(--yellow); border-bottom: var(--border-width) solid var(--black); }
+    .hero-content { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: center; }
+    .hero h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.1; margin-bottom: 16px; }
+    .hero .tagline { font-size: 1.5rem; font-weight: 500; margin-bottom: 8px; color: var(--blue); }
+    .hero .role { font-size: 1.25rem; margin-bottom: 24px; }
+    .hero .subtitle { font-size: 1.125rem; margin-bottom: 32px; line-height: 1.7; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-image { display: flex; justify-content: center; }
+    .avatar-frame { width: 280px; height: 280px; border: var(--border-width) solid var(--black); box-shadow: 12px 12px 0 var(--black); background: var(--white); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .stats-bar { padding: 32px 0; background: var(--black); color: var(--white); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .stat-item h3 { font-size: 2rem; font-weight: 700; color: var(--yellow); }
+    .stat-item p { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; }
+  </style>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Cole Horsman</h1>
+          <p class="tagline">Part Cloud Engineer. Part Security. Part Tinkerer.</p>
+          <p class="role">Field CTO @ Sonrai Security</p>
+          <p class="subtitle">
+            Cloud security leader who can't stop building things. I specialize in identity security, CIEM, 
+            and enterprise cloud architecture — helping organizations achieve least privilege at scale. 
+            When I'm not securing clouds, I'm tinkering with AI, vibe coding, and building community.
+          </p>
+          <div class="hero-buttons">
+            <a href="#experience" class="btn">View Experience</a>
+            <a href="https://linkedin.com/in/colep" class="btn outline" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="avatar-frame">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQHPtVP8_chrhQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718717981137?e=1742428800&v=beta&t=cole-horsman" alt="Cole Horsman" onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='🛡️'; this.parentElement.style.fontSize='7rem';">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><h3>Field CTO</h3><p>Sonrai Security</p></div>
+        <div class="stat-item"><h3>6mo → 6d</h3><p>IAM Resolution</p></div>
+        <div class="stat-item"><h3>2,000+</h3><p>Identities Managed</p></div>
+        <div class="stat-item"><h3>3</h3><p>AWS Conferences</p></div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .about { padding: 80px 0; border-bottom: var(--border-width) solid var(--black); }
+    .about-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 48px; }
+    .about-text { font-size: 1.125rem; line-height: 1.8; }
+    .about-text p { margin-bottom: 24px; }
+    .quick-facts { padding: 24px; }
+    .quick-facts h3 { font-size: 1.25rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--black); }
+    .quick-facts ul { list-style: none; }
+    .quick-facts li { padding: 12px 0; border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 12px; }
+    .quick-facts li:last-child { border-bottom: none; }
+  </style>
+
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a cloud security executive who loves building things. As Field CTO at Sonrai Security, 
+            I work with enterprise customers to implement robust cloud security strategies and achieve 
+            least privilege at scale. But I'm not just about security — I'm a tinkerer at heart.
+          </p>
+          <p>
+            Previously, I served as AVP of Cloud Security at KKR, where I tackled IAM challenges across 
+            2,000+ identities with unused permissions. Before that, I led cloud security at Global Atlantic 
+            Financial Group, reducing identity and permissions resolution time from 6 months to 6 days — 
+            work that was featured in case studies by both Palo Alto Networks and Sonrai Security.
+          </p>
+          <p>
+            I'm passionate about AI security, developer experience, and building security architectures 
+            that enable rather than block. I founded VibeDSM to bring the Des Moines tech community together 
+            around vibe coding, and I'm a founding member of the AI Security Council. I also serve as 
+            CISO for ISSA Des Moines and regularly speak at major conferences including AWS re:Invent, 
+            AWS re:Inforce, and Palo Alto Ignite.
+          </p>
+        </div>
+        <div class="card quick-facts">
+          <h3>Quick Facts</h3>
+          <ul>
+            <li>🛡️ Field CTO @ Sonrai Security</li>
+            <li>🏛️ Former AVP Cloud Security @ KKR</li>
+            <li>💼 Former AVP @ Global Atlantic</li>
+            <li>🎖️ CISO @ ISSA Des Moines</li>
+            <li>🚀 Founder @ VibeDSM</li>
+            <li>🤖 AI Security Council (Founding)</li>
+            <li>📍 Des Moines, IA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .experience { padding: 80px 0; border-bottom: var(--border-width) solid var(--black); }
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 4px; background: var(--black); }
+    .timeline-item { position: relative; margin-bottom: 48px; padding: 24px; }
+    .timeline-item::before { content: ''; position: absolute; left: -40px; top: 32px; width: 20px; height: 20px; background: var(--yellow); border: 3px solid var(--black); }
+    .timeline-item.current::before { background: var(--green); }
+    .timeline-item h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .timeline-item .company { font-size: 1.125rem; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
+    .timeline-item .date { font-family: var(--font-mono); font-size: 0.875rem; color: #666; margin-bottom: 16px; }
+    .timeline-item ul { margin-left: 20px; } .timeline-item li { margin-bottom: 8px; }
+  </style>
+
+  <section class="experience" id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item card current">
+          <h3>Field CTO</h3>
+          <p class="company">Sonrai Security</p>
+          <p class="date">Present</p>
+          <ul>
+            <li>Leading technical strategy and customer engagement for cloud identity security platform</li>
+            <li>Advising enterprise customers on cloud security architecture and CIEM implementation</li>
+            <li>Driving product direction based on market needs and customer feedback</li>
+            <li>Cloud Security Advocate — speaking at AWS re:Invent, re:Inforce, and industry events</li>
+          </ul>
+        </div>
+        <div class="timeline-item card">
+          <h3>AVP, Cloud Security</h3>
+          <p class="company">KKR</p>
+          <p class="date">Mar 2025 - Aug 2025</p>
+          <ul>
+            <li>Led cloud security strategy for one of the world's largest investment firms</li>
+            <li>Managed IAM across 2,000+ identities with unused permissions</li>
+            <li>Implemented Cloud Permissions Firewall for automated least privilege</li>
+            <li>Built and managed cloud security team and processes</li>
+          </ul>
+        </div>
+        <div class="timeline-item card">
+          <h3>AVP, Cloud Security / Security Operations</h3>
+          <p class="company">Global Atlantic Financial Group</p>
+          <p class="date">5+ years</p>
+          <ul>
+            <li>Reduced cloud identity and permissions resolution time from 6 months to 6 days</li>
+            <li>Implemented Prisma Cloud for shift-left security integration</li>
+            <li>Established cloud security governance and compliance frameworks</li>
+            <li>Featured in <a href="https://www.paloaltonetworks.com/customers/global-atlantic-financial-group-shifts-left-by-integrating-security-into-the-development-process" target="_blank">Palo Alto Networks</a> and <a href="https://sonraisecurity.com/customer-success/global-atlantic/" target="_blank">Sonrai Security</a> case studies</li>
+          </ul>
+        </div>
+        <div class="timeline-item card">
+          <h3>Earlier Roles</h3>
+          <p class="company">Sogeti & Previous</p>
+          <p class="date">2011 - 2014</p>
+          <ul>
+            <li>Built foundation in IT infrastructure and security</li>
+            <li>Developed expertise in enterprise environments</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .speaking { padding: 80px 0; background: var(--purple); color: var(--white); border-bottom: var(--border-width) solid var(--black); }
+    .speaking .section-title { color: var(--white); }
+    .speaking .section-title::before { background: var(--yellow); }
+    .speaking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+    .speaking-card { background: var(--white); color: var(--black); padding: 32px; border: var(--border-width) solid var(--black); }
+    .speaking-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .speaking-card .venue { font-weight: 600; color: var(--blue); margin-bottom: 12px; }
+    .speaking-card p { color: #444; line-height: 1.6; margin-bottom: 12px; }
+    .speaking-card a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .conference-badges { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; justify-content: center; }
+    .conf-badge { padding: 12px 24px; font-size: 1rem; font-weight: 700; border: 3px solid var(--black); background: var(--yellow); color: var(--black); }
+  </style>
+
+  <section class="speaking" id="speaking">
+    <div class="container">
+      <h2 class="section-title">Speaking & Thought Leadership</h2>
+      <div class="conference-badges">
+        <span class="conf-badge">AWS re:Invent</span>
+        <span class="conf-badge">AWS re:Inforce</span>
+        <span class="conf-badge">Palo Alto Ignite</span>
+        <span class="conf-badge">Sonrai ACCESS</span>
+        <span class="conf-badge">ISSA</span>
+      </div>
+      <div class="speaking-grid">
+        <div class="speaking-card card">
+          <h3>AWS re:Invent & re:Inforce</h3>
+          <p class="venue">AWS Major Conferences</p>
+          <p>Speaking on cloud security, identity management, and enterprise security best practices at AWS's flagship security and developer conferences.</p>
+        </div>
+        <div class="speaking-card card">
+          <h3>Shift Left is a Dead End for Cloud Identity Security</h3>
+          <p class="venue">Sonrai ACCESS '24</p>
+          <p>Challenging conventional wisdom on shift-left security approaches for cloud identity. Co-presented with Brad Peters.</p>
+          <a href="https://sonraisecurity.com/events-webinars/shift-left-is-a-dead-end-for-cloud-identity-security/" target="_blank">Watch →</a>
+        </div>
+        <div class="speaking-card card">
+          <h3>Implementing Least Privilege in AWS with SCPs</h3>
+          <p class="venue">Sonrai ACCESS '24</p>
+          <p>From manual to automated: practical guide to implementing least privilege using Service Control Policies.</p>
+          <a href="https://sonraisecurity.com/access-2024/from-manual-to-automated-implementing-least-privilege-in-aws-with-scps/" target="_blank">Watch →</a>
+        </div>
+        <div class="speaking-card card">
+          <h3>Prisma Cloud Journey at Global Atlantic</h3>
+          <p class="venue">Palo Alto Ignite '22</p>
+          <p>Walking through Global Atlantic's journey and maturation with Prisma Cloud for shift-left security.</p>
+          <a href="https://www.paloaltonetworks.com/blog/en/prisma-cloud/ignite22-conference-sessions/" target="_blank">Learn More →</a>
+        </div>
+        <div class="speaking-card card">
+          <h3>Building AI-Ready Security Architectures</h3>
+          <p class="venue">ISSA Des Moines</p>
+          <p>Preparing security architectures for AI workloads and emerging threats.</p>
+          <a href="https://desmoines.issa.org/events/4th-quarter-issa-des-moines-meeting/" target="_blank">Info →</a>
+        </div>
+        <div class="speaking-card card">
+          <h3>Vibe Coding Coaching</h3>
+          <p class="venue">Chainguard (with Dan Lorenc)</p>
+          <p>Collaborative session on modern development practices and security integration.</p>
+          <a href="https://www.youtube.com/watch?v=CleYfvBM8mk" target="_blank">Watch →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .projects { padding: 80px 0; background: var(--black); color: var(--white); border-bottom: var(--border-width) solid var(--black); }
+    .projects .section-title { color: var(--white); }
+    .projects .section-title::before { background: var(--green); }
+    .projects-intro { font-size: 1.25rem; line-height: 1.8; max-width: 800px; margin-bottom: 48px; padding: 24px; background: rgba(255,255,255,0.1); border-left: 4px solid var(--yellow); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+    .project-card { background: var(--white); color: var(--black); padding: 32px; border: var(--border-width) solid var(--white); }
+    .project-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .project-card .context { font-weight: 600; color: var(--blue); margin-bottom: 12px; }
+    .project-card p { color: #444; line-height: 1.6; margin-bottom: 16px; }
+    .project-card .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  </style>
+
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-intro">
+        <p>Most of my work has been on private company projects at KKR, Global Atlantic, and other enterprises. 
+        I've created README summaries to capture the experience and learnings without exposing proprietary details. 
+        These abstracts showcase the problems solved, technologies used, and impact delivered.</p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card card">
+          <h3>FinTracker — AI-Powered Financial Command Center</h3>
+          <p class="context">Personal Project — Full-Stack Development</p>
+          <p>Built a fully automated personal finance platform that downloads bank transactions daily, auto-categorizes with AI, tracks multi-year taxes, and delivers intelligent financial advice. Replaced TurboTax, RocketMoney, and manual spreadsheets with a single intelligent system.</p>
+          <div class="tags">
+            <span class="badge green">React</span>
+            <span class="badge blue">TypeScript</span>
+            <span class="badge purple">Supabase</span>
+            <span class="badge orange">OpenAI</span>
+            <span class="badge">MCP</span>
+            <span class="badge pink">Kiro</span>
+            <span class="badge red">Claude Code</span>
+          </div>
+        </div>
+        <div class="project-card card">
+          <h3>Sonrai Zombie Blaster — Gamified Cloud Security</h3>
+          <p class="context">Sonrai Security — Demoed at AWS re:Invent (Jeff Barr stopped by!)</p>
+          <p>8-bit video game that transforms cloud security remediation into engaging gameplay. Zombies represent unused IAM identities — zap them to trigger real Sonrai API calls that quarantine actual cloud permissions. 610 tests, 60 FPS, built in 11 days.</p>
+          <div class="tags">
+            <span class="badge blue">Python</span>
+            <span class="badge green">Pygame</span>
+            <span class="badge orange">AWS</span>
+            <span class="badge purple">IAM</span>
+            <span class="badge pink">Kiro</span>
+            <span class="badge red">Claude Code</span>
+          </div>
+        </div>
+        <div class="project-card card">
+          <h3>FeastIQ — AI-Native Smart Nutrition</h3>
+          <p class="context">Personal Project — Mobile App Development</p>
+          <p>React Native app that finally answers "what's for dinner?" using Advanced RAG recipe intelligence (ReAct, Chain of Thought, Tree of Thoughts). Features personalized meal planning, Nova Canvas AI food photography, and intelligent dietary recommendations.</p>
+          <div class="tags">
+            <span class="badge green">React Native</span>
+            <span class="badge orange">AWS Bedrock</span>
+            <span class="badge purple">Terraform</span>
+            <span class="badge blue">FastAPI</span>
+            <span class="badge pink">Kiro</span>
+            <span class="badge red">Claude Code</span>
+          </div>
+        </div>
+        <div class="project-card card">
+          <h3>Security Agent — AI-Powered AWS Remediation</h3>
+          <p class="context">Open Source — <a href="https://github.com/colehorsman/security-agent" target="_blank" style="color: var(--blue);">GitHub</a></p>
+          <p>Autonomous AWS security monitoring and auto-remediation system using Strands Agent framework. Scans Security Hub findings, maps to OWASP Top 10 and MITRE ATT&CK frameworks, and automatically fixes misconfigurations. Runs continuously via EventBridge with production safeguards.</p>
+          <div class="tags">
+            <span class="badge blue">Python</span>
+            <span class="badge orange">AWS</span>
+            <span class="badge purple">Terraform</span>
+            <span class="badge green">Strands Agent</span>
+            <span class="badge red">Security Hub</span>
+            <span class="badge pink">Kiro</span>
+            <span class="badge">Claude Code</span>
+          </div>
+        </div>
+        <div class="project-card card">
+          <h3>re:Inforce Dashboard — AI Conference Summarizer</h3>
+          <p class="context">Open Source — <a href="https://github.com/colehorsman/aws-reinforce-dashboard" target="_blank" style="color: var(--blue);">GitHub</a></p>
+          <p>AI-powered knowledge base that processed 163 AWS re:Inforce 2025 talks (40+ hours of content) into searchable summaries. Categorized by domain (AI/ML Security, IAM, DevSecOps, etc.) with technical implementation details, framework mappings, and direct video links.</p>
+          <div class="tags">
+            <span class="badge orange">AWS</span>
+            <span class="badge blue">PostgreSQL</span>
+            <span class="badge green">AI/ML</span>
+            <span class="badge purple">re:Inforce</span>
+            <span class="badge pink">Kiro</span>
+            <span class="badge red">Claude Code</span>
+          </div>
+        </div>
+        <div class="project-card card">
+          <h3>ATLAS — Autonomous Sales Intelligence</h3>
+          <p class="context">Sonrai Security — Field CTO Tooling</p>
+          <p>Full-stack sales intelligence platform unifying LinkedIn network visualization, Salesforce pipeline sync, Attention.tech call analysis with MEDDIC scoring, and New Relic tenant health monitoring. AI agents deliver automated meeting prep and deal risk alerts via Slack.</p>
+          <div class="tags">
+            <span class="badge blue">TypeScript</span>
+            <span class="badge green">React</span>
+            <span class="badge purple">Supabase</span>
+            <span class="badge orange">MCP</span>
+            <span class="badge pink">Kiro</span>
+            <span class="badge red">Claude Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .community { padding: 80px 0; background: var(--pink); border-bottom: var(--border-width) solid var(--black); }
+    .community .section-title::before { background: var(--black); }
+    .community-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+    .community-card { background: var(--white); padding: 32px; border: var(--border-width) solid var(--black); box-shadow: 8px 8px 0 rgba(0,0,0,0.2); }
+    .community-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .community-card .org { font-size: 1.125rem; font-weight: 600; color: var(--blue); margin-bottom: 16px; }
+    .community-card p { color: #444; line-height: 1.6; }
+  </style>
+
+  <section class="community" id="community">
+    <div class="container">
+      <h2 class="section-title">Community & Volunteer Leadership</h2>
+      <div class="community-grid">
+        <div class="community-card">
+          <h3>Chief Information Security Officer (CISO)</h3>
+          <p class="org">ISSA Des Moines Chapter</p>
+          <p>Serving as volunteer CISO for the Des Moines chapter of ISSA (Information Systems Security Association). 
+          Leading security strategy and governance for the chapter while contributing to the broader security community 
+          through events, mentorship, and knowledge sharing.</p>
+        </div>
+        <div class="community-card">
+          <h3>Founder</h3>
+          <p class="org">VibeDSM</p>
+          <p>Founded VibeDSM, a Des Moines area vibe coding collaboration project. Building community around 
+          AI-assisted development, pair programming, and the joy of building things together. Bringing together 
+          developers, security folks, and tinkerers.</p>
+        </div>
+        <div class="community-card">
+          <h3>Founding Member</h3>
+          <p class="org">AI Security Council</p>
+          <p>Founding member of the AI Security Council, working to shape the future of AI security practices, 
+          standards, and governance. Contributing to industry guidance on securing AI/ML workloads and 
+          responsible AI development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .skills { padding: 80px 0; background: var(--blue); color: var(--white); border-bottom: var(--border-width) solid var(--black); }
+    .skills .section-title { color: var(--white); }
+    .skills .section-title::before { background: var(--yellow); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .skill-category { background: var(--white); color: var(--black); padding: 24px; border: var(--border-width) solid var(--white); }
+    .skill-category h3 { font-size: 1.25rem; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--black); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .contact { padding: 80px 0; background: var(--green); border-top: var(--border-width) solid var(--black); }
+    .contact-content { text-align: center; max-width: 700px; margin: 0 auto; }
+    .contact h2 { font-size: 3rem; margin-bottom: 24px; }
+    .contact p { font-size: 1.25rem; margin-bottom: 32px; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    footer { padding: 24px 0; background: var(--black); color: var(--white); text-align: center; }
+    footer a { color: var(--yellow); }
+    @media (max-width: 768px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero h1 { font-size: 2.5rem; } .hero-buttons { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { display: none; } .avatar-frame { width: 200px; height: 200px; }
+      .mode-toggle { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.75rem; }
+    }
+  </style>
+
+  <section class="skills" id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category card">
+          <h3>Cloud Platforms</h3>
+          <div class="skill-tags">
+            <span class="badge orange">AWS</span><span class="badge blue">Azure</span>
+            <span class="badge green">GCP</span><span class="badge">Multi-Cloud</span>
+          </div>
+        </div>
+        <div class="skill-category card">
+          <h3>Security Domains</h3>
+          <div class="skill-tags">
+            <span class="badge red">CIEM</span><span class="badge">IAM</span>
+            <span class="badge pink">CSPM</span><span class="badge purple">Zero Trust</span><span class="badge blue">SCPs</span>
+          </div>
+        </div>
+        <div class="skill-category card">
+          <h3>Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="badge blue">Sonrai</span><span class="badge purple">Prisma Cloud</span>
+            <span class="badge orange">Terraform</span><span class="badge">Kubernetes</span>
+            <span class="badge green">MCP</span><span class="badge pink">Kiro</span><span class="badge red">Claude Code</span>
+          </div>
+        </div>
+        <div class="skill-category card">
+          <h3>Tinkering</h3>
+          <div class="skill-tags">
+            <span class="badge green">AI/ML</span><span class="badge pink">Vibe Coding</span>
+            <span class="badge">Automation</span><span class="badge blue">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-content">
+        <h2>Let's Build Something</h2>
+        <p>Interested in discussing cloud security, AI, vibe coding, or just want to tinker on something together? I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:colehorsman@gmail.com" class="btn">Email Me</a>
+          <a href="https://linkedin.com/in/colep" class="btn outline" target="_blank">LinkedIn</a>
+          <a href="https://github.com/colehorsman" class="btn outline" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Cole Horsman. Field CTO @ <a href="https://sonraisecurity.com" target="_blank">Sonrai Security</a> | Founder @ VibeDSM | CISO @ ISSA Des Moines</p>
+    </div>
+  </footer>
+  </div><!-- end normal-content -->
+
+  <script>
+    // ==================== MODE & TAB SWITCHING ====================
+    function toggleNerdMode() {
+      document.body.classList.toggle('nerd-mode');
+      const isNerdMode = document.body.classList.contains('nerd-mode');
+      localStorage.setItem('nerdMode', isNerdMode);
+      if (isNerdMode) {
+        switchTab('about');
+        setTimeout(() => document.getElementById('terminalInput')?.focus(), 100);
+      }
+    }
+    
+    function switchTab(tabName) {
+      document.querySelectorAll('.terminal-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.terminal-pane').forEach(pane => pane.classList.remove('active'));
+      document.querySelector(`.terminal-tab[data-tab="${tabName}"]`)?.classList.add('active');
+      document.getElementById(`pane-${tabName}`)?.classList.add('active');
+      clearSearch();
+    }
+
+    // ==================== COMMAND SYSTEM ====================
+    const commandList = [
+      { cmd: '/help', desc: 'Show all commands' },
+      { cmd: '/search <term>', desc: 'Search content across tabs' },
+      { cmd: '/goto <tab>', desc: 'Jump to a tab' },
+      { cmd: '/fortune', desc: 'Random security wisdom' },
+      { cmd: '/hack', desc: 'Initialize hack sequence' },
+      { cmd: '/vim', desc: 'Open vim (good luck)' },
+      { cmd: '/matrix', desc: 'Enter the Matrix' },
+      { cmd: '/sudo hire cole', desc: 'Execute hiring protocol' },
+      { cmd: '/clear', desc: 'Clear output' },
+      { cmd: '/exit', desc: 'Try to leave' },
+    ];
+
+    let selectedAutocomplete = -1;
+
+    const fortunes = [
+      "The best security is the kind users don't notice.",
+      "Least privilege isn't a destination, it's a journey.",
+      "In cloud security, trust is a vulnerability.",
+      "The only secure system is one that's powered off.",
+      "Identity is the new perimeter.",
+      "Shift left, but don't forget to look right.",
+      "Zero trust: because firewalls have trust issues.",
+      "Your permissions are showing. 👀",
+      "sudo make me a sandwich",
+      "There are only two types of companies: those that have been hacked, and those that don't know it yet."
+    ];
+
+    const commands = {
+      '/help': () => ({
+        type: 'success',
+        content: `<span class="terminal-comment"># Available Commands</span>
+
+<span class="terminal-string">/help</span>          Show this help message
+<span class="terminal-string">/search &lt;term&gt;</span> Search content across all tabs
+<span class="terminal-string">/fortune</span>       Random security wisdom
+<span class="terminal-string">/hack</span>          🔓 Initialize hack sequence...
+<span class="terminal-string">/vim</span>           Open vim (good luck)
+<span class="terminal-string">/sudo hire cole</span> Execute hiring protocol
+<span class="terminal-string">/matrix</span>        Enter the Matrix
+<span class="terminal-string">/clear</span>         Clear command output
+<span class="terminal-string">/exit</span>          Try to leave
+
+<span class="terminal-comment"># Navigation</span>
+<span class="terminal-string">/goto &lt;tab&gt;</span>    Jump to tab (about, experience, talks, community, skills, contact)`
+      }),
+
+      '/fortune': () => ({
+        type: 'fun',
+        content: `<span class="terminal-comment"># Fortune Cookie 🥠</span>
+
+"${fortunes[Math.floor(Math.random() * fortunes.length)]}"`
+      }),
+
+      '/clear': () => {
+        document.getElementById('commandOutput').classList.remove('visible');
+        return null;
+      },
+
+      '/exit': () => ({
+        type: 'error',
+        content: `<span style="color: #FF6B9D">Nice try. 😏</span>
+
+You can check out any time you like, but you can never leave.
+
+<span class="terminal-comment"># Try /help for actual commands</span>`
+      }),
+
+      '/hack': () => {
+        runHackSequence();
+        return null;
+      },
+
+      '/vim': () => {
+        openVim();
+        return null;
+      },
+
+      '/matrix': () => {
+        runMatrix();
+        return null;
+      },
+
+      '/sudo hire cole': () => {
+        createConfetti();
+        return {
+          type: 'success',
+          content: `<span style="color: #00FF00">✓ Permission granted.</span>
+
+<span class="terminal-comment"># Executing hiring protocol...</span>
+
+[████████████████████] 100%
+
+🎉 <span style="color: #FFE500">OFFER LETTER GENERATED</span> 🎉
+
+<span class="terminal-comment"># Next steps:</span>
+→ Email: <a href="mailto:colehorsman@gmail.com" class="terminal-link">colehorsman@gmail.com</a>
+→ LinkedIn: <a href="https://linkedin.com/in/colep" class="terminal-link" target="_blank">linkedin.com/in/colep</a>
+
+<span style="color: #888">Let's build something awesome together.</span>`
+        };
+      }
+    };
+
+    function processCommand(input) {
+      const trimmed = input.trim().toLowerCase();
+      const output = document.getElementById('commandOutput');
+      
+      // Direct command match
+      if (commands[trimmed]) {
+        const result = commands[trimmed]();
+        if (result) showOutput(result.type, result.content);
+        return;
+      }
+
+      // /search <term>
+      if (trimmed.startsWith('/search ')) {
+        const term = input.trim().substring(8);
+        if (term.length < 2) {
+          showOutput('error', 'Search term must be at least 2 characters.');
+          return;
+        }
+        searchContent(term);
+        return;
+      }
+
+      // /goto <tab>
+      if (trimmed.startsWith('/goto ')) {
+        const tab = trimmed.substring(6);
+        const validTabs = ['about', 'experience', 'talks', 'community', 'skills', 'contact'];
+        if (validTabs.includes(tab)) {
+          switchTab(tab);
+          showOutput('success', `Switched to ${tab} tab.`);
+        } else {
+          showOutput('error', `Unknown tab: ${tab}\nValid tabs: ${validTabs.join(', ')}`);
+        }
+        return;
+      }
+
+      // Unknown command
+      showOutput('error', `command not found: ${input}\n\n<span class="terminal-comment"># Type /help for available commands</span>`);
+    }
+
+    function showOutput(type, content) {
+      const output = document.getElementById('commandOutput');
+      output.innerHTML = content;
+      output.className = `command-output visible ${type}`;
+    }
+
+    // ==================== SEARCH ====================
+    function searchContent(term) {
+      clearSearch();
+      const termLower = term.toLowerCase();
+      const terminalBody = document.querySelector('.terminal-body');
+      let matchCount = 0;
+      let matchedTabs = new Set();
+
+      document.querySelectorAll('.terminal-pane').forEach(pane => {
+        const tabName = pane.id.replace('pane-', '');
+        const walker = document.createTreeWalker(pane, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        
+        while (node = walker.nextNode()) {
+          if (node.nodeValue.toLowerCase().includes(termLower)) {
+            const span = document.createElement('span');
+            const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            span.innerHTML = node.nodeValue.replace(regex, '<mark class="search-highlight">$1</mark>');
+            node.parentNode.replaceChild(span, node);
+            matchCount++;
+            matchedTabs.add(tabName);
+          }
+        }
+      });
+
+      if (matchCount > 0) {
+        const tabsArray = Array.from(matchedTabs);
+        showOutput('success', `Found matches in: ${tabsArray.join(', ')}\n\n<span class="terminal-comment"># Use /goto ${tabsArray[0]} to view</span>`);
+        if (matchedTabs.size === 1) switchTab(tabsArray[0]);
+      } else {
+        showOutput('error', `No matches found for "${term}"`);
+      }
+    }
+
+    function clearSearch() {
+      document.querySelectorAll('.search-highlight').forEach(el => {
+        const text = el.textContent;
+        el.parentNode.replaceChild(document.createTextNode(text), el);
+      });
+      // Normalize text nodes
+      document.querySelectorAll('.terminal-pane').forEach(pane => pane.normalize());
+    }
+
+    // ==================== FUN COMMANDS ====================
+    function runHackSequence() {
+      const output = document.getElementById('commandOutput');
+      output.className = 'command-output visible fun';
+      
+      const steps = [
+        { text: '<span style="color: #00FF00">Initializing hack sequence...</span>', delay: 0 },
+        { text: '\n[▓░░░░░░░░░] Bypassing firewall...', delay: 500 },
+        { text: '\n[▓▓▓░░░░░░░] Accessing mainframe...', delay: 1000 },
+        { text: '\n[▓▓▓▓▓░░░░░] Decrypting passwords...', delay: 1500 },
+        { text: '\n[▓▓▓▓▓▓▓░░░] Downloading secrets...', delay: 2000 },
+        { text: '\n[▓▓▓▓▓▓▓▓▓▓] Complete!', delay: 2500 },
+        { text: '\n\n<span style="color: #FFE500">Just kidding. 😏</span>\n<span style="color: #888">I build security, not break it.</span>\n\n<span class="terminal-comment"># But seriously, let\'s talk about your security posture.</span>', delay: 3000 }
+      ];
+
+      output.innerHTML = '';
+      steps.forEach(step => {
+        setTimeout(() => { output.innerHTML += step.text; }, step.delay);
+      });
+    }
+
+    function openVim() {
+      const overlay = document.getElementById('vimOverlay');
+      const content = document.getElementById('vimContent');
+      const cmdLine = document.getElementById('vimCommand');
+      
+      content.innerHTML = `~
+~
+~
+~
+~                              VIM - Vi IMproved
+~
+~                               version 9.0.1
+~                           by Bram Moolenaar et al.
+~
+~                 Vim is open source and freely distributable
+~
+~                        Help poor children in Uganda!
+~                type  :help iccf<Enter>       for information
+~
+~                type  :q<Enter>               to exit
+~                type  :help<Enter>            for on-line help
+~
+~
+~`;
+      cmdLine.textContent = '';
+      overlay.classList.add('active');
+      
+      let vimCmd = '';
+      const vimHandler = (e) => {
+        // Ignore modifier keys alone
+        if (['Shift', 'Control', 'Alt', 'Meta', 'CapsLock', 'Tab'].includes(e.key)) {
+          return;
+        }
+        
+        e.preventDefault();
+        
+        if (e.key === 'Escape') {
+          vimCmd = '';
+          cmdLine.textContent = '';
+        } else if (e.key === 'Backspace') {
+          if (vimCmd.length > 0) {
+            vimCmd = vimCmd.slice(0, -1);
+            cmdLine.textContent = vimCmd;
+          }
+        } else if (e.key === ':' && vimCmd === '') {
+          vimCmd = ':';
+          cmdLine.textContent = ':';
+        } else if (e.key === 'Enter') {
+          if (vimCmd === ':q' || vimCmd === ':q!' || vimCmd === ':wq' || vimCmd === ':x') {
+            overlay.classList.remove('active');
+            document.removeEventListener('keydown', vimHandler);
+            showOutput('success', `<span style="color: #00FF00">You escaped vim!</span> 🎉\n\n<span class="terminal-comment"># Achievement unlocked: Vim Survivor</span>`);
+            setTimeout(() => document.getElementById('terminalInput')?.focus(), 100);
+          } else if (vimCmd.startsWith(':')) {
+            // Unknown command, clear it
+            vimCmd = '';
+            cmdLine.textContent = '';
+          }
+        } else if (vimCmd.startsWith(':') && e.key.length === 1) {
+          // Only append single character keys (letters, numbers, symbols)
+          vimCmd += e.key;
+          cmdLine.textContent = vimCmd;
+        }
+      };
+      document.addEventListener('keydown', vimHandler);
+    }
+
+    function runMatrix() {
+      const canvas = document.getElementById('matrixCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.classList.add('active');
+
+      const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789';
+      const fontSize = 14;
+      const columns = canvas.width / fontSize;
+      const drops = Array(Math.floor(columns)).fill(1);
+
+      let frameCount = 0;
+      const maxFrames = 150;
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00FF00';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        }
+
+        frameCount++;
+        if (frameCount < maxFrames) {
+          requestAnimationFrame(draw);
+        } else {
+          canvas.classList.remove('active');
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          showOutput('fun', `<span style="color: #00FF00">Wake up, Neo...</span>\n\n<span class="terminal-comment"># The Matrix has you.</span>`);
+        }
+      }
+      draw();
+    }
+
+    function createConfetti() {
+      const colors = ['#FFE500', '#00FF00', '#FF6B9D', '#00BFFF', '#FF6B35', '#9B5DE5'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.cssText = `
+          left: ${Math.random() * 100}vw;
+          top: -10px;
+          width: ${Math.random() * 10 + 5}px;
+          height: ${Math.random() * 10 + 5}px;
+          background: ${colors[Math.floor(Math.random() * colors.length)]};
+          transform: rotate(${Math.random() * 360}deg);
+        `;
+        document.body.appendChild(confetti);
+        
+        const animation = confetti.animate([
+          { transform: `translateY(0) rotate(0deg)`, opacity: 1 },
+          { transform: `translateY(100vh) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+        ], { duration: Math.random() * 2000 + 2000, easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' });
+        
+        animation.onfinish = () => confetti.remove();
+      }
+    }
+
+    // ==================== AUTOCOMPLETE ====================
+    function showAutocomplete(filter = '') {
+      const autocomplete = document.getElementById('autocomplete');
+      const filtered = commandList.filter(c => 
+        c.cmd.toLowerCase().includes(filter.toLowerCase())
+      );
+      
+      if (filtered.length === 0 || filter === '') {
+        // Show all when just "/" is typed
+        const toShow = filter === '/' ? commandList : filtered;
+        if (toShow.length === 0) {
+          autocomplete.classList.remove('visible');
+          return;
+        }
+      }
+      
+      const items = (filter === '/' ? commandList : filtered).map((c, i) => 
+        `<div class="autocomplete-item${i === selectedAutocomplete ? ' selected' : ''}" data-cmd="${c.cmd}" data-index="${i}">
+          <span class="cmd">${c.cmd}</span>
+          <span class="desc">${c.desc}</span>
+        </div>`
+      ).join('');
+      
+      autocomplete.innerHTML = items;
+      autocomplete.classList.add('visible');
+      
+      // Add click handlers
+      autocomplete.querySelectorAll('.autocomplete-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const cmd = item.dataset.cmd;
+          const input = document.getElementById('terminalInput');
+          // If command has <param>, just put the base command
+          input.value = cmd.includes('<') ? cmd.split(' <')[0] + ' ' : cmd;
+          hideAutocomplete();
+          input.focus();
+        });
+      });
+    }
+
+    function hideAutocomplete() {
+      document.getElementById('autocomplete').classList.remove('visible');
+      selectedAutocomplete = -1;
+    }
+
+    function navigateAutocomplete(direction) {
+      const autocomplete = document.getElementById('autocomplete');
+      const items = autocomplete.querySelectorAll('.autocomplete-item');
+      if (items.length === 0) return;
+      
+      items.forEach(item => item.classList.remove('selected'));
+      
+      if (direction === 'down') {
+        selectedAutocomplete = (selectedAutocomplete + 1) % items.length;
+      } else {
+        selectedAutocomplete = selectedAutocomplete <= 0 ? items.length - 1 : selectedAutocomplete - 1;
+      }
+      
+      items[selectedAutocomplete].classList.add('selected');
+      items[selectedAutocomplete].scrollIntoView({ block: 'nearest' });
+    }
+
+    function selectAutocomplete() {
+      const autocomplete = document.getElementById('autocomplete');
+      const selected = autocomplete.querySelector('.autocomplete-item.selected');
+      if (selected) {
+        const cmd = selected.dataset.cmd;
+        const input = document.getElementById('terminalInput');
+        input.value = cmd.includes('<') ? cmd.split(' <')[0] + ' ' : cmd;
+        hideAutocomplete();
+        input.focus();
+        return true;
+      }
+      return false;
+    }
+
+    // ==================== EVENT LISTENERS ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      if (localStorage.getItem('nerdMode') === 'true') {
+        document.body.classList.add('nerd-mode');
+      }
+
+      const input = document.getElementById('terminalInput');
+      if (input) {
+        input.addEventListener('keydown', (e) => {
+          const autocomplete = document.getElementById('autocomplete');
+          const isVisible = autocomplete.classList.contains('visible');
+          
+          if (e.key === 'ArrowDown' && isVisible) {
+            e.preventDefault();
+            navigateAutocomplete('down');
+          } else if (e.key === 'ArrowUp' && isVisible) {
+            e.preventDefault();
+            navigateAutocomplete('up');
+          } else if (e.key === 'Tab' && isVisible) {
+            e.preventDefault();
+            selectAutocomplete();
+          } else if (e.key === 'Enter') {
+            if (isVisible && selectedAutocomplete >= 0) {
+              e.preventDefault();
+              selectAutocomplete();
+            } else if (input.value.trim()) {
+              processCommand(input.value);
+              input.value = '';
+              hideAutocomplete();
+            }
+          } else if (e.key === 'Escape') {
+            hideAutocomplete();
+          }
+        });
+        
+        input.addEventListener('input', (e) => {
+          const value = input.value;
+          if (value.startsWith('/')) {
+            showAutocomplete(value);
+          } else {
+            hideAutocomplete();
+          }
+        });
+        
+        // Hide autocomplete when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.terminal-input-wrapper')) {
+            hideAutocomplete();
+          }
+        });
+      }
+    });
+
+    // Tab keyboard navigation (only when input not focused)
+    document.addEventListener('keydown', function(e) {
+      if (!document.body.classList.contains('nerd-mode')) return;
+      if (document.activeElement.id === 'terminalInput') return;
+      if (document.getElementById('vimOverlay').classList.contains('active')) return;
+      
+      const tabs = ['about', 'experience', 'talks', 'community', 'skills', 'contact'];
+      const activeTab = document.querySelector('.terminal-tab.active');
+      if (!activeTab) return;
+      const currentIndex = tabs.indexOf(activeTab.dataset.tab);
+      
+      if (e.key === 'ArrowRight') {
+        switchTab(tabs[(currentIndex + 1) % tabs.length]);
+      } else if (e.key === 'ArrowLeft') {
+        switchTab(tabs[(currentIndex - 1 + tabs.length) % tabs.length]);
+      }
+    });
+  </script>
+</body>
+</html>
