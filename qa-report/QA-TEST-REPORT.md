@@ -50,7 +50,8 @@
 ⚠️ GET media.licdn.com - Blocked by CORB (expected - cross-origin)
 ```
 
-**Screenshot:** `screenshots/01-homepage-hero.png`
+### Evidence: Initial Page Load
+![Initial Homepage Load](screenshots/01-homepage-hero.png)
 
 ---
 
@@ -81,7 +82,8 @@ The JS error occurs during initial load but does not affect functionality. The C
 | Stats Bar | ✅ | 4 stats with yellow highlights |
 | Profile Image | ⚠️ | Fallback emoji shown (LinkedIn URL expired) |
 
-**Screenshot:** `screenshots/03-normal-mode-hero.png`
+### Evidence: Normal Mode Hero Section
+![Normal Mode Hero](screenshots/03-normal-mode-hero.png)
 
 ### 3.2 Content Sections
 | Section | Status | Elements Verified |
@@ -95,7 +97,8 @@ The JS error occurs during initial load but does not affect functionality. The C
 | Contact | ✅ | 3 CTA buttons |
 | Footer | ✅ | Copyright, external links |
 
-**Screenshot:** `screenshots/04-normal-mode-fullpage.png`
+### Evidence: Full Page Normal Mode
+![Normal Mode Full Page](screenshots/04-normal-mode-fullpage.png)
 
 ### 3.3 Navigation Testing
 | Link | Target | Status |
@@ -108,7 +111,11 @@ The JS error occurs during initial load but does not affect functionality. The C
 | Contact | #contact | ✅ Scrolls correctly |
 | Let's Connect | #contact | ✅ Scrolls correctly |
 
-**Screenshot:** `screenshots/05-experience-section.png`, `screenshots/06-projects-section.png`
+### Evidence: Experience Section Navigation
+![Experience Section](screenshots/05-experience-section.png)
+
+### Evidence: Projects Section Navigation
+![Projects Section](screenshots/06-projects-section.png)
 
 ---
 
@@ -132,7 +139,8 @@ The JS error occurs during initial load but does not affect functionality. The C
 | ASCII banner | ✅ | "COLE HORSMAN" renders |
 | Command input | ✅ | Placeholder text visible |
 
-**Screenshot:** `screenshots/07-nerd-mode-about.png`
+### Evidence: Nerd Mode About Tab
+![Nerd Mode About](screenshots/07-nerd-mode-about.png)
 
 ### 4.3 Terminal Tabs
 | Tab | Status | Content Verified |
@@ -144,13 +152,35 @@ The JS error occurs during initial load but does not affect functionality. The C
 | skills | ✅ | neofetch output |
 | contact | ✅ | contact.sh script |
 
-**Screenshot:** `screenshots/11-nerd-mode-experience-tab.png`
+### Evidence: Experience Tab in Nerd Mode
+![Nerd Mode Experience Tab](screenshots/11-nerd-mode-experience-tab.png)
 
-### 4.4 Command System
+### 4.4 Command System Testing
+
+#### /help Command
 | Command | Status | Output Verified |
 |---------|--------|-----------------|
 | /help | ✅ | Shows all commands |
-| /hack | ✅ | Animated progress bar |
+
+### Evidence: /help Command Output
+![Help Command](screenshots/08-nerd-mode-help-command.png)
+
+#### /hack Command
+| Phase | Status |
+|-------|--------|
+| Initializing | ✅ |
+| Progress bar animation | ✅ |
+| "Just kidding" message | ✅ |
+
+### Evidence: /hack Command In Progress
+![Hack Command Start](screenshots/09-nerd-mode-hack-command.png)
+
+### Evidence: /hack Command Complete
+![Hack Command Complete](screenshots/10-nerd-mode-hack-complete.png)
+
+#### Other Commands Tested
+| Command | Status | Output Verified |
+|---------|--------|-----------------|
 | /matrix | ✅ | Matrix rain effect |
 | /fortune | ✅ | Random security quote |
 | /vim | ✅ | Vim trap overlay |
@@ -159,11 +189,6 @@ The JS error occurs during initial load but does not affect functionality. The C
 | /search <term> | ✅ | Highlights matches |
 | /clear | ✅ | Clears output |
 | /exit | ✅ | "Nice try" message |
-
-**Screenshots:** 
-- `screenshots/08-nerd-mode-help-command.png`
-- `screenshots/09-nerd-mode-hack-command.png`
-- `screenshots/10-nerd-mode-hack-complete.png`
 
 ### 4.5 Autocomplete
 | Feature | Status |
@@ -220,7 +245,8 @@ The JS error occurs during initial load but does not affect functionality. The C
 | Card grid layouts | ✅ |
 | Nerd mode toggle | ✅ |
 
-**Screenshot:** `screenshots/14-desktop-final.png`
+### Evidence: Desktop Final State
+![Desktop Final](screenshots/14-desktop-final.png)
 
 ### 6.2 Mobile (375x812)
 | Element | Status | Notes |
@@ -232,9 +258,11 @@ The JS error occurs during initial load but does not affect functionality. The C
 | Nerd mode toggle | ✅ | Smaller, repositioned |
 | Terminal | ✅ | Scrollable, tabs overflow |
 
-**Screenshots:** 
-- `screenshots/12-mobile-view-normal.png`
-- `screenshots/13-mobile-view-nerd.png`
+### Evidence: Mobile View - Normal Mode
+![Mobile Normal Mode](screenshots/12-mobile-view-normal.png)
+
+### Evidence: Mobile View - Nerd Mode
+![Mobile Nerd Mode](screenshots/13-mobile-view-nerd.png)
 
 ---
 
@@ -294,26 +322,24 @@ None identified.
 
 ---
 
-## 10. Test Artifacts
+## 10. All Screenshots Gallery
 
-### Screenshots Captured
-
-| # | Filename | Description |
-|---|----------|-------------|
-| 1 | 01-homepage-hero.png | Initial page load (nerd mode from localStorage) |
-| 2 | 02-homepage-fullpage.png | Full page capture |
-| 3 | 03-normal-mode-hero.png | Normal mode hero section |
-| 4 | 04-normal-mode-fullpage.png | Normal mode full page |
-| 5 | 05-experience-section.png | Experience section after nav click |
-| 6 | 06-projects-section.png | Projects section |
-| 7 | 07-nerd-mode-about.png | Nerd mode about tab |
-| 8 | 08-nerd-mode-help-command.png | /help command output |
-| 9 | 09-nerd-mode-hack-command.png | /hack command in progress |
-| 10 | 10-nerd-mode-hack-complete.png | /hack command complete |
-| 11 | 11-nerd-mode-experience-tab.png | Experience tab in nerd mode |
-| 12 | 12-mobile-view-normal.png | Mobile viewport (375px) normal mode |
-| 13 | 13-mobile-view-nerd.png | Mobile viewport nerd mode |
-| 14 | 14-desktop-final.png | Final desktop state |
+| # | Screenshot | Description |
+|---|------------|-------------|
+| 1 | ![](screenshots/01-homepage-hero.png) | Initial page load |
+| 2 | ![](screenshots/02-homepage-fullpage.png) | Full page capture |
+| 3 | ![](screenshots/03-normal-mode-hero.png) | Normal mode hero |
+| 4 | ![](screenshots/04-normal-mode-fullpage.png) | Normal mode full page |
+| 5 | ![](screenshots/05-experience-section.png) | Experience section |
+| 6 | ![](screenshots/06-projects-section.png) | Projects section |
+| 7 | ![](screenshots/07-nerd-mode-about.png) | Nerd mode about tab |
+| 8 | ![](screenshots/08-nerd-mode-help-command.png) | /help command |
+| 9 | ![](screenshots/09-nerd-mode-hack-command.png) | /hack in progress |
+| 10 | ![](screenshots/10-nerd-mode-hack-complete.png) | /hack complete |
+| 11 | ![](screenshots/11-nerd-mode-experience-tab.png) | Experience tab |
+| 12 | ![](screenshots/12-mobile-view-normal.png) | Mobile normal |
+| 13 | ![](screenshots/13-mobile-view-nerd.png) | Mobile nerd |
+| 14 | ![](screenshots/14-desktop-final.png) | Desktop final |
 
 ---
 
